@@ -11,18 +11,6 @@ const SignUpPage = () => {
     password: "",
   });
 
-  // This is how we did it at first, without using our custom hook
-  // const queryClient = useQueryClient();
-  // const {
-  //   mutate: signupMutation,
-  //   isPending,
-  //   error,
-  // } = useMutation({
-  //   mutationFn: signup,
-  //   onSuccess: () => queryClient.invalidateQueries({ queryKey: ["authUser"] }),
-  // });
-
-  // This is how we did it using our custom hook - optimized version
   const { isPending, error, signupMutation } = useSignUp();
 
   const handleSignup = (e) => {
@@ -46,7 +34,6 @@ const SignUpPage = () => {
             </span>
           </div>
 
-          {/* ERROR MESSAGE IF ANY */}
           {error && (
             <div className="alert alert-error mb-4">
               <span>{error.response.data.message}</span>
@@ -64,35 +51,35 @@ const SignUpPage = () => {
                 </div>
 
                 <div className="space-y-3">
-                  {/* FULLNAME */}
+
                   <div className="form-control w-full">
                     <label className="label">
                       <span className="label-text">Full Name</span>
                     </label>
                     <input
                       type="text"
-                      placeholder="John Doe"
+                      placeholder="Sanjai"
                       className="input input-bordered w-full"
                       value={signupData.fullName}
                       onChange={(e) => setSignupData({ ...signupData, fullName: e.target.value })}
                       required
                     />
                   </div>
-                  {/* EMAIL */}
+         
                   <div className="form-control w-full">
                     <label className="label">
                       <span className="label-text">Email</span>
                     </label>
                     <input
                       type="email"
-                      placeholder="john@gmail.com"
+                      placeholder="Sanjai@gmail.com"
                       className="input input-bordered w-full"
                       value={signupData.email}
                       onChange={(e) => setSignupData({ ...signupData, email: e.target.value })}
                       required
                     />
                   </div>
-                  {/* PASSWORD */}
+
                   <div className="form-control w-full">
                     <label className="label">
                       <span className="label-text">Password</span>
@@ -146,10 +133,9 @@ const SignUpPage = () => {
           </div>
         </div>
 
-        {/* SIGNUP FORM - RIGHT SIDE */}
         <div className="hidden lg:flex w-full lg:w-1/2 bg-primary/10 items-center justify-center">
           <div className="max-w-md p-8">
-            {/* Illustration */}
+
             <div className="relative aspect-square max-w-sm mx-auto">
               <img src="/i.png" alt="Language connection illustration" className="w-full h-full" />
             </div>
